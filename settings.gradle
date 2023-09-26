@@ -1,0 +1,3 @@
+rootProject.name = "AndroidDeepAi"
+include ':app'
+include ':DeepAi'
