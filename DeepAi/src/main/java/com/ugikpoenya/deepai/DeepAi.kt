@@ -47,7 +47,10 @@ class DeepAi(context: Context) {
         builder.setType(MultipartBody.FORM)
         builder.addFormDataPart("text", bodyRequest?.text.toString())
         if (bodyRequest?.grid_size != null && bodyRequest.grid_size!!.isNotEmpty()) builder.addFormDataPart("grid_size", bodyRequest.grid_size.toString())
-        if (bodyRequest?.image_generator_version != null && bodyRequest.image_generator_version!!.isNotEmpty()) builder.addFormDataPart("image_generator_version", bodyRequest?.image_generator_version.toString())
+        if (bodyRequest?.width != null && bodyRequest.width!!.isNotEmpty()) builder.addFormDataPart("width", bodyRequest.width.toString())
+        if (bodyRequest?.height != null && bodyRequest.height!!.isNotEmpty()) builder.addFormDataPart("height", bodyRequest.height.toString())
+        if (bodyRequest?.negative_prompt != null && bodyRequest.negative_prompt!!.isNotEmpty()) builder.addFormDataPart("negative_prompt", bodyRequest.negative_prompt.toString())
+        if (bodyRequest?.image_generator_version != null && bodyRequest.image_generator_version!!.isNotEmpty()) builder.addFormDataPart("image_generator_version", bodyRequest.image_generator_version.toString())
 
         if (bodyRequest?.image != null && bodyRequest.image!!.isNotEmpty()) {
             val image = File(bodyRequest.image.toString())
