@@ -54,6 +54,16 @@ class DeepAi(context: Context) {
             builder.addFormDataPart("image", image.name, image.asRequestBody("multipart/form-data".toMediaTypeOrNull()))
         }
 
+        if (bodyRequest?.image1 != null && bodyRequest.image1!!.isNotEmpty()) {
+            val image1 = File(bodyRequest.image1.toString())
+            builder.addFormDataPart("image1", image1.name, image1.asRequestBody("multipart/form-data".toMediaTypeOrNull()))
+        }
+
+        if (bodyRequest?.image2 != null && bodyRequest.image2!!.isNotEmpty()) {
+            val image2 = File(bodyRequest.image2.toString())
+            builder.addFormDataPart("image2", image2.name, image2.asRequestBody("multipart/form-data".toMediaTypeOrNull()))
+        }
+
         val requestBody = builder.build()
         val apiService = ApiClient.client!!.create(ApiService::class.java)
         val call: Call<BodyResponse> = apiService.generateImages(url, DEEPAI_API_KEY, requestBody)
